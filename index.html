@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+ <!---->
+ <html lang = "ca">
+ <head>
+         <title>Contrasenyes segures</title>
+        <link rel="icon" type="image/png" href="img/favicon.png">
+        <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/contrasegur.css">
+    <script>
+        function Comprovar() {        
+            var password = document.getElementById("password").value;
+            document.getElementById("minimcar").checked = false;
+            document.getElementById("majuscula").checked = false;
+            document.getElementById("minuscula").checked = false;
+            document.getElementById("numero").checked = false;
+            document.getElementById("carespecial").checked = false;
+            if (password.length >= 8)
+                document.getElementById("minimcar").checked = true;
+            var lletra = "";
+            for (i = 0; i < password.length; i++) {
+                lletra = password.charAt(i);
+                if (!isNaN(lletra)) {
+                    document.getElementById("numero").checked = true;
+                } else if (lletra.toUpperCase() === lletra.toLowerCase()) {
+                    document.getElementById("carespecial").checked = true;
+                } else if (lletra === lletra.toUpperCase()) {
+                    document.getElementById("majuscula").checked = true;
+                } else {
+                    document.getElementById("minuscula").checked = true;                                                                                                                               
+                }
+            }
+            calcular_base();
+        }
+      
+    function Iniciar()
+    {
+        window.alert("Password: " + document.getElementById("password").value);
+    }
+
+    function calcular_base() {
+       exponente = document.getElementById("password").value.length;
+       base=0;
+        if (document.getElementById("minimcar").checked) (base = base+10);
+        if (document.getElementById("majuscula").checked) (base = base+10);
+        if (document.getElementById("minuscula").checked) (base = base+40);
+        if (document.getElementById("carespecial").checked) (base = base+41);
+        window.alert("calcular_base");
+        
+       calcul = base * exponente / 16;
+       window.alert("Calcul: " + calcul);
+       CostComputacional = Math.pow(base , exponente) / 1e6;
+       AnysProcessament = CostComputacional / (365*24*60*60);
+       DiesProcessament = CostComputacional / (24*60**60);
+       window.alert( "Password: " + document.getElementById("password").value + "\n\ - " + CostComputacional.toExponential());
+       
+       if (CostComputacional <1e3) nivel_robustesa=0 ;
+       else if (CostComputacional <1e6) nivel_robustesa=1 ;
+       else if (CostComputacional <1e8) nivel_robustesa=2 ;
+       else if (CostComputacional <1e16) nivel_robustesa=3 ;
+   }
+ </script>
+ </head>
+ <body>
+     <img src="img/logo-centre.jpg" alt=""/>
+ <form>
+    <label for="user"> Usuari o correu: </label>
+    <input type="text" id="user" required><br>
+    <label for="password">Contrasenya: </label>
+    <input type="password" id="password" onchange="Comprovar()"
+    required><br>
+    <input type="submit" id="inisessio" onclick="Iniciar();" value="Iniciar sessió">
+</form>
+ <br>
+        <input type="checkbox" id="minimcar" disabled> Mínim 8 caràcters<br>
+        <input type="checkbox" id="majuscula" disabled> almenys una lletra
+        majúscula<br>
+        <input type="checkbox" id="minuscula" disabled> almenys una lletra
+        minúscula<br>
+        <input type="checkbox" id="numero"
+        disabled> almenys un número<br>
+        <input type="checkbox" id="carespecial" disabled> almenys un carácter
+        especial<br>
+        
+        
+    Dèbil- Regular- Bona- Forta<br>
+    Weak- So-so- Great!- Strong<br>
+ </div>
+ </body>
+</html>

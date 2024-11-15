@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <img src="img/logo-centre.jpg" alt=""/>
+             <h2> Escriu el correu i la contrasenya </h2>
+               <div class="container">
+            <form>
+                <label for="user">Usuari o correu: </label>
+                <input type="text" id="user" required><br>
+                <label for="password">Contrasenya: </label>
+                <input type="password" id="password" onchange="Comprovar()" required><br>
+                <input type="submit" id="inisessio" onclick="Iniciar();" value="Iniciar sessió" 
+                       style="padding: 6px; margin-top: 6px;" disabled><br>
+                <p> <input type "checkbox" id="minimcar"    disabled> Mínim 8 caràcters,<br>
+            <input type="checkbox" id="majuscula"   disabled> almenys una lletra majúscula,<br>
+            <input type="checkbox" id="minuscula"   disabled> almenys una lletra minúscula,<br>
+            <input type="checkbox" id="numero"      disabled> almenys un número,<br>
+            <input type="checkbox" id="carespecial" disabled> almenys un carácter especial.<br>
+        <div>TODO write content</div>
+    </body>
+</html>
